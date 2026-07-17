@@ -276,6 +276,205 @@
             border-color: rgba(255, 45, 85, 0.2);
         }
 
+        .nav-btn-offline {
+            background: linear-gradient(135deg, rgba(255, 45, 85, 0.15), rgba(255, 45, 85, 0.08));
+            border: 1px solid rgba(255, 45, 85, 0.3);
+            color: var(--text-accent);
+            padding: 8px 18px;
+            border-radius: 100px;
+            cursor: pointer;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-fast);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-btn-offline:hover {
+            background: linear-gradient(135deg, rgba(255, 45, 85, 0.25), rgba(255, 45, 85, 0.15));
+            border-color: rgba(255, 45, 85, 0.5);
+            box-shadow: 0 0 20px rgba(255, 45, 85, 0.2);
+            color: var(--text-primary);
+        }
+
+        .nav-btn-offline.active {
+            color: var(--text-primary);
+            background: linear-gradient(135deg, rgba(255, 45, 85, 0.25), rgba(255, 45, 85, 0.15));
+            border-color: rgba(255, 45, 85, 0.4);
+        }
+
+        /* ===== OFFLINE SCREEN ===== */
+        .offline-hero-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 45, 85, 0.2), rgba(196, 16, 64, 0.15));
+            border: 1px solid rgba(255, 45, 85, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--text-accent);
+            filter: drop-shadow(0 0 20px rgba(255, 45, 85, 0.3));
+        }
+
+        .offline-hero-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #ff2d55 60%, #ff6b8a 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 6s ease-in-out infinite;
+        }
+
+        .offline-hero-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            max-width: 520px;
+            margin: 0 auto 36px;
+            text-align: center;
+        }
+
+        .offline-hero-subtitle strong {
+            color: var(--text-primary);
+        }
+
+        .offline-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 36px;
+        }
+
+        .offline-step-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            padding: 28px 20px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .offline-step-card:hover {
+            border-color: rgba(255, 45, 85, 0.25);
+            box-shadow: var(--shadow-card-hover);
+            transform: translateY(-4px);
+        }
+
+        .offline-step-number {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 45, 85, 0.2), rgba(196, 16, 64, 0.12));
+            border: 1px solid rgba(255, 45, 85, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-accent);
+        }
+
+        .offline-step-card h4 {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .offline-step-card p {
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            line-height: 1.6;
+        }
+
+        .offline-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 28px 0;
+        }
+
+        .offline-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: rgba(255, 45, 85, 0.04);
+            border: 1px solid rgba(255, 45, 85, 0.08);
+            border-radius: var(--border-radius-md);
+            transition: var(--transition-fast);
+        }
+
+        .offline-feature:hover {
+            background: rgba(255, 45, 85, 0.08);
+            border-color: rgba(255, 45, 85, 0.15);
+        }
+
+        .offline-feature i {
+            color: var(--text-accent);
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .offline-feature span {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .offline-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--text-accent), var(--accent-deep));
+            color: #fff;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 100px;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            text-decoration: none;
+            box-shadow: 0 0 30px rgba(255, 45, 85, 0.3), 0 8px 24px rgba(0, 0, 0, 0.4);
+            margin-top: 10px;
+        }
+
+        .offline-download-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 0 50px rgba(255, 45, 85, 0.5), 0 16px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 700px) {
+            .offline-steps {
+                grid-template-columns: 1fr;
+            }
+            .offline-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* ===== SCREENS ===== */
         .app-main {
             flex: 1;
@@ -2063,6 +2262,7 @@
             <nav class="app-nav">
                 <button class="nav-btn active" id="nav-home-btn"><i class="fa-solid fa-house"></i> Home</button>
                 <button class="nav-btn" id="nav-info-btn"><i class="fa-solid fa-circle-info"></i> About</button>
+                <button class="nav-btn-offline" id="nav-offline-btn"><i class="fa-solid fa-download"></i> Download Offline Client</button>
             </nav>
         </div>
     </header>
@@ -2661,6 +2861,71 @@
             </div>
         </section>
 
+        <!-- SCREEN: OFFLINE CLIENT -->
+        <section id="screen-offline" class="app-screen">
+            <div class="screen-header">
+                <button class="btn-back" id="offline-back-btn"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                <h2>Download Offline Client</h2>
+            </div>
+
+            <div class="info-content glass-card" style="text-align:center;">
+                <div class="offline-hero-icon">
+                    <i class="fa-solid fa-laptop-file"></i>
+                </div>
+                <h3 class="offline-hero-title">USE XFORM OFFLINE</h3>
+                <p class="offline-hero-subtitle">
+                    Download the full <strong>XForm Offline Client</strong> and use every feature without an internet connection.
+                    It is the <strong>complete premium version</strong> &mdash; every tool, every conversion, every option works
+                    <strong>1:1</strong> just like in the browser, but fully offline. No server, no uploads, no limits.
+                </p>
+
+                <div class="offline-features">
+                    <div class="offline-feature">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>100% local &amp; private</span>
+                    </div>
+                    <div class="offline-feature">
+                        <i class="fa-solid fa-gauge-high"></i>
+                        <span>Full speed &mdash; no network needed</span>
+                    </div>
+                    <div class="offline-feature">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>All image, audio &amp; video tools</span>
+                    </div>
+                    <div class="offline-feature">
+                        <i class="fa-solid fa-infinity"></i>
+                        <span>Premium &mdash; no restrictions</span>
+                    </div>
+                </div>
+
+                <a href="https://drive.google.com/file/d/1ibX2mzw8A8k2Mw7wDt4Vyg4QzHFafNDj/view?usp=sharing"
+                    target="_blank" rel="noopener noreferrer" class="offline-download-btn">
+                    <i class="fa-solid fa-download"></i> Download the File
+                </a>
+
+                <hr class="divider" style="margin:40px 0 30px;">
+
+                <h3 style="text-align:left;margin-bottom:16px;font-family:var(--font-display);font-size:1.1rem;letter-spacing:1px;">Step-by-Step Guide</h3>
+                <div class="offline-steps">
+                    <div class="offline-step-card">
+                        <div class="offline-step-number">1</div>
+                        <h4>CLICK DOWNLOAD</h4>
+                        <p>Click the "Download the File" button above. You will be redirected to Google Drive where the file is hosted. click in the left corner the download button.</p>
+                    </div>
+                    <div class="offline-step-card">
+                        <div class="offline-step-number">2</div>
+                        <h4>SAVE TO DESKTOP</h4>
+                        <p>Download the file and move it to your Desktop for easy access. This keeps things organized and simple.</p>
+                    </div>
+                    <div class="offline-step-card">
+                        <div class="offline-step-number">3</div>
+                        <h4>DOUBLE-CLICK &amp; RUN</h4>
+                        <p>Open the file by double-clicking it. XForm launches right in your browser &mdash; fully offline and ready to use.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer class="app-footer">
@@ -2728,12 +2993,14 @@
                 processing: document.getElementById('screen-processing'),
                 done: document.getElementById('screen-done'),
                 info: document.getElementById('screen-info'),
-                'rar-info': document.getElementById('screen-rar')
+                'rar-info': document.getElementById('screen-rar'),
+                offline: document.getElementById('screen-offline')
             };
 
             const navBtns = {
                 home: document.getElementById('nav-home-btn'),
                 info: document.getElementById('nav-info-btn'),
+                offline: document.getElementById('nav-offline-btn'),
                 footerInfo: document.getElementById('footer-about-link'),
                 logo: document.getElementById('logo-btn')
             };
@@ -2821,17 +3088,25 @@
                 if (screenId === 'welcome') {
                     navBtns.home.classList.add('active');
                     navBtns.info.classList.remove('active');
+                    navBtns.offline.classList.remove('active');
                 } else if (screenId === 'info') {
                     navBtns.home.classList.remove('active');
                     navBtns.info.classList.add('active');
+                    navBtns.offline.classList.remove('active');
+                } else if (screenId === 'offline') {
+                    navBtns.home.classList.remove('active');
+                    navBtns.info.classList.remove('active');
+                    navBtns.offline.classList.add('active');
                 } else {
                     navBtns.home.classList.remove('active');
                     navBtns.info.classList.remove('active');
+                    navBtns.offline.classList.remove('active');
                 }
             }
 
             navBtns.home.addEventListener('click', () => showScreen('welcome'));
             navBtns.info.addEventListener('click', () => showScreen('info'));
+            navBtns.offline.addEventListener('click', () => showScreen('offline'));
             navBtns.footerInfo.addEventListener('click', (e) => {
                 e.preventDefault();
                 showScreen('info');
@@ -2841,6 +3116,7 @@
             infoBackBtn.addEventListener('click', () => showScreen('welcome'));
             rarBackBtn.addEventListener('click', () => showScreen('welcome'));
             rarExportBtn.addEventListener('click', () => showScreen('rar-info'));
+            document.getElementById('offline-back-btn').addEventListener('click', () => showScreen('welcome'));
 
             ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
                 document.body.addEventListener(eventName, preventDefaults, false);
