@@ -2604,6 +2604,141 @@
             animation: onlinePulse 2s infinite ease-in-out;
         }
     </style>
+
+    <style>
+        /* ===== POPUP PERMISSION REQUEST ===== */
+        .popup-permission-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .popup-permission-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .popup-permission-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            padding: 36px;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .popup-permission-overlay.active .popup-permission-card {
+            transform: scale(1);
+        }
+
+        .popup-permission-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 45, 85, 0.15), rgba(196, 16, 64, 0.08));
+            border: 1px solid rgba(255, 45, 85, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .popup-permission-icon i {
+            font-size: 1.6rem;
+            color: var(--text-accent);
+        }
+
+        .popup-permission-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .popup-permission-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .popup-permission-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .popup-permission-actions .btn {
+            min-width: 140px;
+        }
+
+        .popup-permission-browser-tabs {
+            display: flex;
+            gap: 4px;
+            justify-content: center;
+            margin: 18px 0 0;
+            flex-wrap: wrap;
+        }
+
+        .popup-browser-tab {
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            border-radius: var(--border-radius-sm);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .popup-browser-tab:hover {
+            background: rgba(255, 45, 85, 0.08);
+            border-color: rgba(255, 45, 85, 0.2);
+        }
+
+        .popup-browser-tab.active {
+            background: rgba(255, 45, 85, 0.12);
+            border-color: rgba(255, 45, 85, 0.3);
+            color: var(--text-accent);
+        }
+
+        .popup-browser-tab i {
+            margin-right: 4px;
+        }
+
+        .popup-browser-content {
+            margin: 14px 0;
+        }
+
+        .popup-browser-instruction {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .popup-browser-instruction p {
+            margin-bottom: 8px;
+        }
+
+        .popup-browser-instruction strong {
+            color: var(--text-primary);
+        }
+    </style>
 </head>
 
 <body>
@@ -2621,6 +2756,64 @@
             <div class="loader-status-container">
                 <div class="loader-status" id="boot-status">INITIALIZING SANDBOX</div>
                 <div class="loader-diagnostics" id="boot-diagnostics">> Booting local runtime...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP BLOCKING WARNING -->
+    <div class="popup-permission-overlay" id="popup-permission-overlay">
+        <div class="popup-permission-card">
+            <div class="popup-permission-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3>Pop-ups werden blockiert</h3>
+            <p>Ihr Browser blockiert neue Tabs/Pop-ups. Dabei werden <strong>mehrere gleichzeitige Downloads</strong> unterbrochen und es kann zu Fehlern kommen.</p>
+            <p style="font-size:0.8rem; color:var(--text-accent); margin-top:10px;">Sie erhalten diese Meldung beim ersten Download-Versuch. Erlauben Sie Pop-ups für diese Seite und versuchen Sie den Download erneut.</p>
+
+            <div class="popup-permission-browser-tabs">
+                <div class="popup-browser-tab active" data-browser="chrome">
+                    <i class="fa-brands fa-chrome"></i> Chrome
+                </div>
+                <div class="popup-browser-tab" data-browser="firefox">
+                    <i class="fa-brands fa-firefox"></i> Firefox
+                </div>
+                <div class="popup-browser-tab" data-browser="edge">
+                    <i class="fa-brands fa-edge"></i> Edge
+                </div>
+                <div class="popup-browser-tab" data-browser="opera">
+                    <i class="fa-brands fa-opera"></i> Opera
+                </div>
+                <div class="popup-browser-tab" data-browser="safari">
+                    <i class="fa-brands fa-safari"></i> Safari
+                </div>
+            </div>
+
+            <div class="popup-browser-content" id="popup-browser-content">
+                <div class="popup-browser-instruction" data-for="chrome">
+                    <p>Klicken Sie auf das <strong>Pop-up-Symbol</strong> rechts in der Adressleiste und wählen Sie <strong>"Immer zulassen"</strong>.</p>
+                    <p>Oder: Einstellungen → Datenschutz und Sicherheit → Website-Einstellungen → Pop-ups → Diese Site zulassen.</p>
+                </div>
+                <div class="popup-browser-instruction" data-for="firefox" style="display:none;">
+                    <p>Klicken Sie auf das <strong>Schild-Symbol</strong> links in der Adressleiste und entfernen Sie den Haken bei "Pop-ups blockieren".</p>
+                    <p>Oder: Einstellungen → Datenschutz & Sicherheit → Berechtigungen → Pop-ups → Ausnahmen → diese Site erlauben.</p>
+                </div>
+                <div class="popup-browser-instruction" data-for="edge" style="display:none;">
+                    <p>Klicken Sie auf das <strong>Pop-up-Symbol</strong> rechts in der Adressleiste und wählen Sie <strong>"Immer zulassen"</strong>.</p>
+                    <p>Oder: Einstellungen → Cookie und Site-Berechtigungen → Pop-ups und Weiterleitungen → diese Site zulassen.</p>
+                </div>
+                <div class="popup-browser-instruction" data-for="opera" style="display:none;">
+                    <p>Klicken Sie auf das <strong>Pop-up-Symbol</strong> rechts in der Adressleiste und wählen Sie <strong>"Immer zulassen"</strong>.</p>
+                    <p>Oder: Einstellungen → Datenschutz → Pop-ups → Diese Site ausnahmen.</p>
+                </div>
+                <div class="popup-browser-instruction" data-for="safari" style="display:none;">
+                    <p>Menüleiste → Safari → Einstellungen → Websites → Pop-up-Fenster → Diese Site auf <strong>"Erlauben"</strong> setzen.</p>
+                </div>
+            </div>
+
+            <div class="popup-permission-actions">
+                <button class="btn btn-primary" id="popup-permission-skip-btn">
+                    <i class="fa-solid fa-check"></i> Verstanden
+                </button>
             </div>
         </div>
     </div>
@@ -3405,16 +3598,14 @@
         </section>
 
     </main>
-
-    <footer class="app-footer">
-        <div class="footer-container">
-            <p>&copy; 2026 XForm. Local client sandbox utilities.</p>
-            <div class="footer-links">
-                <a href="#" id="footer-about-link">Technical Specs</a>
-                <span class="sep">|</span>
-                <span class="secure-tag"><i class="fa-solid fa-lock text-accent"></i> Local Only</span>
-            </div>
+    <div class="footer-container">
+        <p>&copy; 2026 XForm. Local client sandbox utilities.</p>
+        <div class="footer-links">
+            <a href="#" id="footer-about-link">Technical Specs</a>
+            <span class="sep">|</span>
+            <span class="secure-tag"><i class="fa-solid fa-lock text-accent"></i> Local Only</span>
         </div>
+    </div>
     </footer>
 
     <!-- Libraries -->
@@ -3450,9 +3641,40 @@
                     loader.classList.add('fade-out');
                     setTimeout(() => loader.remove(), 800);
                 }
+                setTimeout(checkPopupPermission, 1000);
+            }
+
+            function checkPopupPermission() {
+                if (localStorage.getItem('xform_popup_allowed') === 'true') return;
+                const overlay = document.getElementById('popup-permission-overlay');
+                if (!overlay) return;
+                overlay.classList.add('active');
+
+                const browserTabs = overlay.querySelectorAll('.popup-browser-tab');
+                const instructions = overlay.querySelectorAll('.popup-browser-instruction');
+                browserTabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        browserTabs.forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
+                        const browser = tab.dataset.browser;
+                        instructions.forEach(inst => {
+                            inst.style.display = inst.dataset.for === browser ? 'block' : 'none';
+                        });
+                    });
+                });
             }
 
             setTimeout(updateBootLog, 200);
+
+            const popupSkipBtn = document.getElementById('popup-permission-skip-btn');
+            const popupOverlay = document.getElementById('popup-permission-overlay');
+
+            if (popupSkipBtn) {
+                popupSkipBtn.addEventListener('click', () => {
+                    localStorage.setItem('xform_popup_allowed', 'true');
+                    popupOverlay.classList.remove('active');
+                });
+            }
 
             function isFormatSupported(mimeType) {
                 try {
