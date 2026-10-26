@@ -1104,6 +1104,29 @@
             color: var(--text-accent);
         }
 
+        .quality-lock {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            margin-bottom: 20px;
+            background: rgba(255, 45, 85, 0.05);
+            border: 1px solid rgba(255, 45, 85, 0.18);
+            border-radius: var(--border-radius-md);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            line-height: 1.45;
+        }
+
+        .quality-lock i {
+            color: var(--text-accent);
+            flex-shrink: 0;
+        }
+
+        .quality-lock strong {
+            color: var(--text-primary);
+        }
+
         .checkbox-group {
             flex-direction: row;
             align-items: center;
@@ -2340,7 +2363,7 @@
 
         .yt-mode-btn {
             flex: 1;
-            padding: 12px 24px;
+            padding: 12px 14px;
             border: none;
             background: transparent;
             color: var(--text-secondary);
@@ -2388,6 +2411,58 @@
             align-items: center;
         }
 
+        .yt-audio-format-row {
+            display: none;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: rgba(10, 10, 16, 0.55);
+            border: 1px solid rgba(255, 45, 85, 0.2);
+            border-radius: var(--border-radius-md);
+        }
+
+        .yt-audio-format-row.show {
+            display: flex;
+        }
+
+        .yt-audio-format-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .yt-audio-format-label i {
+            color: var(--text-accent);
+        }
+
+        .yt-audio-format-select {
+            flex: 1;
+            min-width: 0;
+            background: rgba(10, 10, 16, 0.85);
+            border: 1px solid rgba(255, 45, 85, 0.28);
+            border-radius: var(--border-radius-md);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 10px 12px;
+            outline: none;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .yt-audio-format-select:focus {
+            border-color: rgba(255, 45, 85, 0.5);
+            box-shadow: 0 0 0 3px rgba(255, 45, 85, 0.1);
+        }
+
         .yt-quality-select {
             flex: 1;
             background: rgba(10, 10, 16, 0.8);
@@ -2408,6 +2483,27 @@
         .yt-quality-select:focus {
             border-color: rgba(255, 45, 85, 0.5);
             box-shadow: 0 0 0 3px rgba(255, 45, 85, 0.1);
+        }
+
+        .yt-quality-fixed {
+            flex: 1;
+            min-height: 47px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 16px;
+            background: rgba(10, 10, 16, 0.8);
+            border: 1px solid rgba(255, 45, 85, 0.28);
+            border-radius: var(--border-radius-md);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .yt-quality-fixed i {
+            color: var(--text-accent);
+            flex-shrink: 0;
         }
 
         .yt-download-btn {
@@ -2473,9 +2569,130 @@
             color: #f87171;
         }
 
+        .yt-status.warn {
+            background: rgba(251, 191, 36, 0.06);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+
         .yt-status i {
             font-size: 1rem;
             flex-shrink: 0;
+        }
+
+        .yt-status span {
+            min-width: 0;
+            word-break: break-word;
+        }
+
+        .yt-server-log {
+            display: none;
+            margin-top: 14px;
+            background: rgba(5, 5, 10, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+        }
+
+        .yt-server-log.show {
+            display: block;
+        }
+
+        .yt-server-log-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text-secondary);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .yt-server-log-head i {
+            color: var(--text-accent);
+            margin-right: 4px;
+        }
+
+        .yt-log-clear {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            cursor: pointer;
+            padding: 2px 4px;
+            opacity: 0.7;
+            transition: var(--transition-fast);
+        }
+
+        .yt-log-clear:hover {
+            color: var(--text-primary);
+            opacity: 1;
+        }
+
+        .yt-server-log-entries {
+            max-height: 180px;
+            overflow-y: auto;
+            padding: 7px 12px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+            font-size: 0.72rem;
+            line-height: 1.55;
+        }
+
+        .yt-log-entry {
+            display: flex;
+            gap: 8px;
+            padding: 2px 0;
+            color: var(--text-secondary);
+        }
+
+        .yt-log-entry.ok {
+            color: #34d399;
+        }
+
+        .yt-log-entry.fail {
+            color: #f87171;
+        }
+
+        .yt-log-entry.warn {
+            color: #fbbf24;
+        }
+
+        .yt-log-time {
+            flex-shrink: 0;
+            opacity: 0.45;
+        }
+
+        .yt-log-entry i {
+            width: 12px;
+            flex-shrink: 0;
+            margin-top: 3px;
+            font-size: 0.6rem;
+        }
+
+        .yt-log-text {
+            min-width: 0;
+            word-break: break-word;
+        }
+
+        .yt-hint {
+            display: flex;
+            gap: 9px;
+            margin-top: 14px;
+            color: var(--text-secondary);
+            font-size: 0.76rem;
+            line-height: 1.6;
+            opacity: 0.85;
+        }
+
+        .yt-hint i {
+            color: var(--text-accent);
+            flex-shrink: 0;
+            margin-top: 3px;
         }
 
         .yt-features {
@@ -2520,6 +2737,11 @@
 
             .yt-mode-toggle {
                 flex-direction: column;
+            }
+
+            .yt-audio-format-row {
+                flex-direction: column;
+                align-items: stretch;
             }
         }
 
@@ -2767,8 +2989,10 @@
                 <i class="fa-solid fa-triangle-exclamation"></i>
             </div>
             <h3>Pop-ups werden blockiert</h3>
-            <p>Ihr Browser blockiert neue Tabs/Pop-ups. Dabei werden <strong>mehrere gleichzeitige Downloads</strong> unterbrochen und es kann zu Fehlern kommen.</p>
-            <p style="font-size:0.8rem; color:var(--text-accent); margin-top:10px;">Sie erhalten diese Meldung beim ersten Download-Versuch. Erlauben Sie Pop-ups für diese Seite und versuchen Sie den Download erneut.</p>
+            <p>Ihr Browser blockiert neue Tabs/Pop-ups. Dabei werden <strong>mehrere gleichzeitige Downloads</strong>
+                unterbrochen und es kann zu Fehlern kommen.</p>
+            <p style="font-size:0.8rem; color:var(--text-accent); margin-top:10px;">Sie erhalten diese Meldung beim
+                ersten Download-Versuch. Erlauben Sie Pop-ups für diese Seite und versuchen Sie den Download erneut.</p>
 
             <div class="popup-permission-browser-tabs">
                 <div class="popup-browser-tab active" data-browser="chrome">
@@ -2790,23 +3014,35 @@
 
             <div class="popup-browser-content" id="popup-browser-content">
                 <div class="popup-browser-instruction" data-for="chrome">
-                    <p>Klicken Sie auf das <strong>Pop-up-Symbol</strong> rechts in der Adressleiste und wählen Sie <strong>"Immer zulassen"</strong>.</p>
-                    <p>Oder: Einstellungen → Datenschutz und Sicherheit → Website-Einstellungen → Pop-ups → Diese Site zulassen.</p>
+                    <p>Klicken Sie auf das <strong>Pop-up-Symbol</strong> rechts in der Adressleiste und wählen Sie
+                        <strong>"Immer zulassen"</strong>.
+                    </p>
+                    <p>Oder: Einstellungen → Datenschutz und Sicherheit → Website-Einstellungen → Pop-ups → Diese Site
+                        zulassen.</p>
                 </div>
                 <div class="popup-browser-instruction" data-for="firefox" style="display:none;">
-                    <p>Klicken Sie auf das <strong>Schild-Symbol</strong> links in der Adressleiste und entfernen Sie den Haken bei "Pop-ups blockieren".</p>
-                    <p>Oder: Einstellungen → Datenschutz & Sicherheit → Berechtigungen → Pop-ups → Ausnahmen → diese Site erlauben.</p>
+                    <p>Klicken Sie auf das <strong>Schild-Symbol</strong> links in der Adressleiste und entfernen Sie
+                        den Haken bei "Pop-ups blockieren".</p>
+                    <p>Oder: Einstellungen → Datenschutz & Sicherheit → Berechtigungen → Pop-ups → Ausnahmen → diese
+                        Site erlauben.</p>
                 </div>
                 <div class="popup-browser-instruction" data-for="edge" style="display:none;">
-                    <p>Klicken Sie auf das <strong>Pop-up-Symbol</strong> rechts in der Adressleiste und wählen Sie <strong>"Immer zulassen"</strong>.</p>
-                    <p>Oder: Einstellungen → Cookie und Site-Berechtigungen → Pop-ups und Weiterleitungen → diese Site zulassen.</p>
+                    <p>Klicken Sie auf das <strong>Pop-up-Symbol</strong> rechts in der Adressleiste und wählen Sie
+                        <strong>"Immer zulassen"</strong>.
+                    </p>
+                    <p>Oder: Einstellungen → Cookie und Site-Berechtigungen → Pop-ups und Weiterleitungen → diese Site
+                        zulassen.</p>
                 </div>
                 <div class="popup-browser-instruction" data-for="opera" style="display:none;">
-                    <p>Klicken Sie auf das <strong>Pop-up-Symbol</strong> rechts in der Adressleiste und wählen Sie <strong>"Immer zulassen"</strong>.</p>
+                    <p>Klicken Sie auf das <strong>Pop-up-Symbol</strong> rechts in der Adressleiste und wählen Sie
+                        <strong>"Immer zulassen"</strong>.
+                    </p>
                     <p>Oder: Einstellungen → Datenschutz → Pop-ups → Diese Site ausnahmen.</p>
                 </div>
                 <div class="popup-browser-instruction" data-for="safari" style="display:none;">
-                    <p>Menüleiste → Safari → Einstellungen → Websites → Pop-up-Fenster → Diese Site auf <strong>"Erlauben"</strong> setzen.</p>
+                    <p>Menüleiste → Safari → Einstellungen → Websites → Pop-up-Fenster → Diese Site auf
+                        <strong>"Erlauben"</strong> setzen.
+                    </p>
                 </div>
             </div>
 
@@ -2982,26 +3218,31 @@
                             placeholder="Paste YouTube link here... (e.g. https://www.youtube.com/watch?v=...)">
                     </div>
                     <div class="yt-mode-toggle">
-                        <button class="yt-mode-btn active" id="yt-mode-video" data-mode="video">
+                        <button class="yt-mode-btn active" id="yt-mode-video" data-mode="video"
+                            title="Video with sound">
                             <i class="fa-solid fa-video"></i> Video
                         </button>
-                        <button class="yt-mode-btn" id="yt-mode-audio" data-mode="audio">
+                        <button class="yt-mode-btn" id="yt-mode-mute" data-mode="mute" title="Video without sound">
+                            <i class="fa-solid fa-volume-xmark"></i> No Sound
+                        </button>
+                        <button class="yt-mode-btn" id="yt-mode-audio" data-mode="audio"
+                            title="Audio only (choose FLAC or MP3)">
                             <i class="fa-solid fa-music"></i> Audio Only
                         </button>
                     </div>
+                    <div class="yt-audio-format-row" id="yt-audio-format-row">
+                        <label class="yt-audio-format-label" for="yt-audio-format-select">
+                            <i class="fa-solid fa-sliders"></i> Audio format
+                        </label>
+                        <select class="yt-audio-format-select" id="yt-audio-format-select">
+                            <option value="flac">FLAC (best quality, larger file)</option>
+                            <option value="mp3">MP3 (320 kbps, smaller &amp; compatible)</option>
+                        </select>
+                    </div>
                     <div class="yt-options-row" style="margin-top:16px;">
-                        <div class="select-wrapper" style="flex:1;">
-                            <select class="yt-quality-select" id="yt-quality-select">
-                                <option value="max">Best Quality (Max)</option>
-                                <option value="4320">4320p (8K)</option>
-                                <option value="2160">2160p (4K)</option>
-                                <option value="1440">1440p (2K)</option>
-                                <option value="1080" selected>1080p (Full HD)</option>
-                                <option value="720">720p (HD)</option>
-                                <option value="480">480p (SD)</option>
-                                <option value="360">360p</option>
-                            </select>
-                            <i class="fa-solid fa-chevron-down select-arrow"></i>
+                        <div class="yt-quality-fixed" title="Always downloads the highest quality available">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span id="yt-quality-fixed-label">Maximum video quality</span>
                         </div>
                         <button class="yt-download-btn" id="yt-download-btn">
                             <i class="fa-solid fa-download"></i> Download
@@ -3011,9 +3252,22 @@
                         <i class="fa-solid fa-circle-info"></i>
                         <span id="yt-status-text"></span>
                     </div>
+                    <div class="yt-server-log" id="yt-server-log">
+                        <div class="yt-server-log-head">
+                            <span><i class="fa-solid fa-server"></i> Server log</span>
+                            <button type="button" class="yt-log-clear" id="yt-log-clear">Clear</button>
+                        </div>
+                        <div class="yt-server-log-entries" id="yt-server-log-entries"></div>
+                    </div>
+                    <div class="yt-hint">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span>Video + sound is processed locally. For Audio Only, choose FLAC (best quality) or
+                            MP3 320 before downloading; only the selected file is saved. The first merge or audio
+                            encode loads a 32&nbsp;MB engine, so it can take a few seconds.</span>
+                    </div>
                     <div class="yt-features">
                         <div class="yt-feature">
-                            <i class="fa-solid fa-bolt"></i> Complete quality
+                            <i class="fa-solid fa-bolt"></i> Maximum quality
                         </div>
                         <div class="yt-feature">
                             <i class="fa-solid fa-shield-halved"></i> Fast & secure
@@ -3169,12 +3423,12 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" style="display: none;">
                             <label for="img-quality-preset">Quality Preset</label>
                             <div class="select-wrapper">
                                 <select id="img-quality-preset" class="form-select">
-                                    <option value="100">Best (100% Quality)</option>
-                                    <option value="90" selected>High (90% Quality)</option>
+                                    <option value="100" selected>Best (100% Quality)</option>
+                                    <option value="90">High (90% Quality)</option>
                                     <option value="75">Medium (75% Quality)</option>
                                     <option value="50">Low (50% Quality)</option>
                                     <option value="custom">Custom Quality...</option>
@@ -3185,9 +3439,13 @@
                         <div class="form-group" id="custom-img-quality-wrap" style="display: none;">
                             <div class="slider-header">
                                 <label for="img-quality">Custom Quality</label>
-                                <span id="img-quality-val">90%</span>
+                                <span id="img-quality-val">100%</span>
                             </div>
-                            <input type="range" id="img-quality" min="10" max="100" value="90" class="form-slider">
+                            <input type="range" id="img-quality" min="10" max="100" value="100" class="form-slider">
+                        </div>
+                        <div class="quality-lock">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span><strong>Maximum quality:</strong> images are always exported at 100% quality.</span>
                         </div>
                     </div>
 
@@ -3213,7 +3471,7 @@
                             </div>
                             <input type="range" id="audio-volume" min="0" max="200" value="100" class="form-slider">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="display: none;">
                             <label for="audio-quality-preset">Frequency Preset</label>
                             <div class="select-wrapper">
                                 <select id="audio-quality-preset" class="form-select">
@@ -3223,6 +3481,11 @@
                                 </select>
                                 <i class="fa-solid fa-chevron-down select-arrow"></i>
                             </div>
+                        </div>
+                        <div class="quality-lock">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span><strong>Maximum quality:</strong> 48 kHz stereo output. MP3 is always encoded at 320
+                                kbps.</span>
                         </div>
                     </div>
 
@@ -3254,8 +3517,8 @@
                             <label for="video-audio-format">Audio Output Format</label>
                             <div class="select-wrapper">
                                 <select id="video-audio-format" class="form-select">
-                                    <option value="mp3" selected>MP3 (Compressed)</option>
-                                    <option value="wav">WAV (Lossless PCM)</option>
+                                    <option value="wav" selected>WAV (Lossless PCM)</option>
+                                    <option value="mp3">MP3 (320 kbps)</option>
                                 </select>
                                 <i class="fa-solid fa-chevron-down select-arrow"></i>
                             </div>
@@ -3268,7 +3531,7 @@
                                 <i class="fa-solid fa-camera"></i> Capture Frame as PNG
                             </button>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="display: none;">
                             <label for="video-quality">Quality Preset</label>
                             <div class="select-wrapper">
                                 <select id="video-quality" class="form-select">
@@ -3278,6 +3541,11 @@
                                 </select>
                                 <i class="fa-solid fa-chevron-down select-arrow"></i>
                             </div>
+                        </div>
+                        <div class="quality-lock">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span><strong>Maximum quality:</strong> original resolution, 60 FPS, and the highest
+                                supported video bitrate.</span>
                         </div>
                     </div>
 
@@ -3511,8 +3779,9 @@
                         <i class="fa-brands fa-youtube"></i>
                     </div>
                     <h3>YOUTUBE DOWNLOADER</h3>
-                    <p>Download videos and audio from YouTube in full quality. Paste any YouTube URL on the home screen
-                        to get started.</p>
+                    <p>Download videos with sound, muted videos, or audio only (choose FLAC or MP3 320). Paste any
+                        YouTube URL on the home screen to get started. Video + sound and audio encoding run locally
+                        in your browser.</p>
                     <div class="yt-status info show"
                         style="display:flex !important;justify-content:center;margin-bottom:20px;">
                         <i class="fa-solid fa-wifi"></i>
@@ -3963,7 +4232,7 @@
 
                     const opt2 = document.createElement('option');
                     opt2.value = 'mp3';
-                    opt2.textContent = 'MP3 (Compressed)';
+                    opt2.textContent = 'MP3 (320 kbps)';
                     outputFormatSelect.appendChild(opt2);
 
                     const audioUrl = URL.createObjectURL(file);
@@ -4416,12 +4685,12 @@
                             setProgress(75);
 
                             let mimeType = 'image/png';
-                            let quality = parseFloat(imgQuality.value) / 100;
+                            const quality = 1;
 
                             if (format === 'jpg') mimeType = 'image/jpeg';
                             else if (format === 'avif') mimeType = 'image/avif';
 
-                            addLog(`Running local GPU encoder. MIME: ${mimeType}`);
+                            addLog(`Running local GPU encoder. MIME: ${mimeType} at maximum quality (100%)...`);
 
                             if (format === 'ico') {
                                 canvasToIco(canvas).then((icoBlob) => {
@@ -4487,15 +4756,8 @@
                 setProgress(50);
                 addLog(`Decoded Sound channels: ${decodedBuffer.numberOfChannels}, Duration: ${decodedBuffer.duration.toFixed(2)}s`);
 
-                let targetRate = 48000;
-                let targetChans = 2;
-                const preset = audioQualityPreset.value;
-                if (preset === 'medium') {
-                    targetRate = 44100;
-                } else if (preset === 'low') {
-                    targetRate = 22050;
-                    targetChans = 1;
-                }
+                const targetRate = 48000;
+                const targetChans = 2;
 
                 const speedMultiplier = parseFloat(audioSpeed.value) || 1.0;
                 const volumeMultiplier = (parseFloat(audioVolume.value) || 100) / 100;
@@ -4579,17 +4841,10 @@
                     setProgress(50);
                     addLog(`Decoded audio track duration: ${decodedBuffer.duration.toFixed(2)}s`);
 
-                    let targetRate = 48000;
-                    let targetChans = 2;
-                    const preset = videoQuality.value;
-                    if (preset === 'medium') {
-                        targetRate = 44100;
-                    } else if (preset === 'low') {
-                        targetRate = 22050;
-                        targetChans = 1;
-                    }
+                    const targetRate = 48000;
+                    const targetChans = 2;
 
-                    addLog(`Resampling to: ${targetRate}Hz...`);
+                    addLog(`Resampling to maximum quality: ${targetRate}Hz stereo...`);
                     const offlineCtx = new OfflineAudioContext(targetChans, decodedBuffer.duration * targetRate, targetRate);
                     const source = offlineCtx.createBufferSource();
                     source.buffer = decodedBuffer;
@@ -4625,7 +4880,7 @@
 
                 } else if (mode === 'mute') {
                     const speedVal = parseFloat(videoSpeed.value) || 1.0;
-                    const muteBlob = await muteVideoTrack(file, videoQuality.value, speedVal);
+                    const muteBlob = await muteVideoTrack(file, 'high', speedVal);
 
                     const originalName = file.name.substring(0, file.name.lastIndexOf('.'));
                     state.convertedBlob = muteBlob;
@@ -4645,16 +4900,9 @@
                     video.muted = true;
                     video.playsInline = true;
 
-                    let scale = 1.0;
-                    let fps = 30;
-                    if (qualityPreset === 'medium') {
-                        scale = 0.75;
-                    } else if (qualityPreset === 'low') {
-                        scale = 0.5;
-                        fps = 24;
-                    } else {
-                        fps = 60;
-                    }
+                    // Quality is always locked to the highest preset: original size and 60 FPS.
+                    const scale = 1.0;
+                    const fps = 60;
 
                     video.onloadedmetadata = () => {
                         setProgress(20);
@@ -4678,11 +4926,28 @@
 
                         let recordedChunks = [];
                         let mediaRecorder;
+                        const targetBitrate = Math.round(Math.min(80000000, Math.max(12000000, w * h * fps * 0.2)));
+                        const mimeCandidates = [
+                            'video/webm;codecs=vp9',
+                            'video/webm;codecs=vp8',
+                            'video/webm'
+                        ];
+                        const mimeType = mimeCandidates.find((type) => {
+                            try {
+                                return MediaRecorder.isTypeSupported(type);
+                            } catch (e) {
+                                return false;
+                            }
+                        }) || 'video/webm';
                         try {
-                            mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+                            mediaRecorder = new MediaRecorder(stream, {
+                                mimeType,
+                                videoBitsPerSecond: targetBitrate
+                            });
                         } catch (e) {
                             mediaRecorder = new MediaRecorder(stream);
                         }
+                        addLog(`Video encoder: ${mediaRecorder.mimeType || mimeType}, ${(targetBitrate / 1000000).toFixed(1)} Mbps.`);
 
                         mediaRecorder.ondataavailable = (e) => {
                             if (e.data && e.data.size > 0) recordedChunks.push(e.data);
@@ -4691,7 +4956,7 @@
                         mediaRecorder.onstop = () => {
                             setProgress(100);
                             addLog('Frame record closed. Rendering complete.');
-                            const outputBlob = new Blob(recordedChunks, { type: 'video/webm' });
+                            const outputBlob = new Blob(recordedChunks, { type: mediaRecorder.mimeType || mimeType });
                             URL.revokeObjectURL(video.src);
                             resolve(outputBlob);
                         };
@@ -4741,7 +5006,7 @@
                     rightInt16[i] = Math.max(-32768, Math.min(32767, Math.round(right[i] * 32767)));
                 }
 
-                const mp3encoder = new lamejs.Mp3Encoder(numChannels, sampleRate, 192);
+                const mp3encoder = new lamejs.Mp3Encoder(numChannels, sampleRate, 320);
                 const mp3Data = [];
                 const blockSize = 1152;
 
@@ -4867,220 +5132,1180 @@
             // ===== YOUTUBE DOWNLOADER =====
             const ytUrlInput = document.getElementById('yt-url-input');
             const ytModeVideo = document.getElementById('yt-mode-video');
+            const ytModeMute = document.getElementById('yt-mode-mute');
             const ytModeAudio = document.getElementById('yt-mode-audio');
-            const ytQualitySelect = document.getElementById('yt-quality-select');
+            const ytQualityFixedLabel = document.getElementById('yt-quality-fixed-label');
+            const ytAudioFormatRow = document.getElementById('yt-audio-format-row');
+            const ytAudioFormatSelect = document.getElementById('yt-audio-format-select');
             const ytDownloadBtn = document.getElementById('yt-download-btn');
             const ytStatus = document.getElementById('yt-status');
             const ytStatusText = document.getElementById('yt-status-text');
             const ytBackBtn = document.getElementById('yt-back-btn');
             const ytScreenGoHome = document.getElementById('yt-screen-go-home');
+            const ytServerLog = document.getElementById('yt-server-log');
+            const ytServerLogEntries = document.getElementById('yt-server-log-entries');
+            const ytLogClear = document.getElementById('yt-log-clear');
+
+            // Verified browser-accessible providers. dead / auth-only instances are intentionally not listed.
+            const YT_COBALT_API = 'https://rue-cobalt.xenon.zone';
+            const YT_INVIDIOUS_API = 'https://yt.chocolatemoo53.com';
+            const YT_COMPANIONS = [
+                'https://yt-comp1.chocolatemoo53.com',
+                'https://yt-comp2.chocolatemoo53.com',
+                'https://yt-comp3.chocolatemoo53.com',
+                'https://yt-comp4.chocolatemoo53.com',
+                'https://yt-comp5.chocolatemoo53.com',
+                'https://yt-comp6.chocolatemoo53.com'
+            ];
+            const YT_FFMPEG_CORE = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/ffmpeg-core.js';
+            const YT_FFMPEG_CORE_FALLBACK = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/umd/ffmpeg-core.js';
 
             let ytMode = 'video';
-            const COBALT_INSTANCES = [
-                'https://cobaltapi.kittycat.boo',
-                'https://kitty.tame.gg',
-                'https://api.cobalt.liubquanti.click',
-                'https://rue-cobalt.xenon.zone',
-                'https://cobaltapi.cjs.nz',
-                'https://cobaltapi.squair.xyz',
-                'https://api.qwkuns.me'
-            ];
-            let COBALT_API = COBALT_INSTANCES[0];
+            let ytAudioFormat = 'flac';
+            let ytBusy = false;
+            let ytFfmpegPromise = null;
+            let ytFfmpegCore = null;
+            let ytLastProgressAt = 0;
 
-            ytModeVideo.addEventListener('click', () => {
-                ytMode = 'video';
-                ytModeVideo.classList.add('active');
-                ytModeAudio.classList.remove('active');
-                ytQualitySelect.innerHTML = `
-                    <option value="max">Best Quality (Max)</option>
-                    <option value="4320">4320p (8K)</option>
-                    <option value="2160">2160p (4K)</option>
-                    <option value="1440">1440p (2K)</option>
-                    <option value="1080" selected>1080p (Full HD)</option>
-                    <option value="720">720p (HD)</option>
-                    <option value="480">480p (SD)</option>
-                    <option value="360">360p</option>
-                `;
-            });
+            function ytFormatBytes(bytes) {
+                const n = Number(bytes) || 0;
+                if (n < 1024) return `${n} B`;
+                if (n < 1024 * 1024) return `${(n / 1024).toFixed(1)} KB`;
+                if (n < 1024 * 1024 * 1024) return `${(n / (1024 * 1024)).toFixed(1)} MB`;
+                return `${(n / (1024 * 1024 * 1024)).toFixed(2)} GB`;
+            }
 
-            ytModeAudio.addEventListener('click', () => {
-                ytMode = 'audio';
-                ytModeAudio.classList.add('active');
-                ytModeVideo.classList.remove('active');
-                ytQualitySelect.innerHTML = `
-                    <option value="best" selected>Best Quality (320kbps)</option>
-                    <option value="320">320 kbps</option>
-                    <option value="256">256 kbps</option>
-                    <option value="128">128 kbps</option>
-                    <option value="96">96 kbps</option>
-                `;
-            });
+            function ytLooksLikeMedia(bytes, type) {
+                if (!bytes || !bytes.length) return false;
+                const lowerType = String(type || '').toLowerCase();
+                if (lowerType.startsWith('text/') || lowerType.includes('html')
+                    || lowerType.includes('json') || lowerType.includes('xml')) {
+                    return false;
+                }
+                const ascii = (start, end) => String.fromCharCode.apply(null, bytes.slice(start, end));
+                if (bytes.length >= 4 && bytes[0] === 0x1A && bytes[1] === 0x45 && bytes[2] === 0xDF && bytes[3] === 0xA3) return true;
+                if (bytes.length >= 8 && ['ftyp', 'styp'].includes(ascii(4, 8))) return true;
+                if (bytes.length >= 3 && ascii(0, 3) === 'ID3') return true;
+                if (bytes.length >= 2 && bytes[0] === 0xFF && (bytes[1] & 0xE0) === 0xE0) return true;
+                if (bytes.length >= 4 && ['OggS', 'fLaC', 'RIFF'].includes(ascii(0, 4))) return true;
+                if (bytes[0] === 0x47) return true; // MPEG-TS
+                return false;
+            }
+
+            function ytLog(kind, text) {
+                if (!ytServerLogEntries) return;
+                ytServerLog.classList.add('show');
+                const row = document.createElement('div');
+                row.className = `yt-log-entry ${kind || ''}`;
+                const icon = kind === 'ok' ? 'fa-circle-check' : kind === 'fail' ? 'fa-circle-xmark' : kind === 'warn' ? 'fa-triangle-exclamation' : 'fa-circle-info';
+                const time = new Date().toLocaleTimeString([], { hour12: false });
+                row.innerHTML = `<span class="yt-log-time">${time}</span><i class="fa-solid ${icon}"></i><span class="yt-log-text"></span>`;
+                row.querySelector('.yt-log-text').textContent = text;
+                ytServerLogEntries.appendChild(row);
+                while (ytServerLogEntries.children.length > 80) {
+                    ytServerLogEntries.removeChild(ytServerLogEntries.firstChild);
+                }
+                ytServerLogEntries.scrollTop = ytServerLogEntries.scrollHeight;
+            }
+
+            function ytClearLog() {
+                ytServerLogEntries.innerHTML = '';
+                ytServerLog.classList.remove('show');
+            }
 
             function showYtStatus(type, text) {
                 ytStatus.className = `yt-status show ${type}`;
                 ytStatusText.textContent = text;
+                const icon = ytStatus.querySelector('i');
+                if (icon) {
+                    icon.className = type === 'success' ? 'fa-solid fa-circle-check'
+                        : type === 'error' ? 'fa-solid fa-circle-xmark'
+                            : type === 'warn' ? 'fa-solid fa-triangle-exclamation'
+                                : 'fa-solid fa-circle-info';
+                }
             }
 
             function hideYtStatus() {
                 ytStatus.className = 'yt-status';
             }
 
-            ytBackBtn.addEventListener('click', () => showScreen('welcome'));
-            ytScreenGoHome.addEventListener('click', () => showScreen('welcome'));
+            function ytSetBusy(busy) {
+                ytBusy = busy;
+                ytDownloadBtn.disabled = busy;
+                ytUrlInput.disabled = busy;
+                if (ytAudioFormatSelect) ytAudioFormatSelect.disabled = busy;
+                if (busy) {
+                    ytDownloadBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Working...';
+                } else {
+                    ytDownloadBtn.innerHTML = '<i class="fa-solid fa-download"></i> Download';
+                }
+            }
 
-            ytDownloadBtn.addEventListener('click', async () => {
+            function ytShowProgress(label, loaded, total) {
+                const now = Date.now();
+                if (now - ytLastProgressAt < 160) return;
+                ytLastProgressAt = now;
+                if (total > 0) {
+                    const pct = Math.min(100, Math.round((loaded / total) * 100));
+                    showYtStatus('info', `${label}: ${pct}% (${ytFormatBytes(loaded)} / ${ytFormatBytes(total)})`);
+                } else {
+                    showYtStatus('info', `${label}: ${ytFormatBytes(loaded)}`);
+                }
+            }
+
+            function ytSelectMode(mode, button) {
+                if (ytBusy) return;
+                ytMode = mode;
+                [ytModeVideo, ytModeMute, ytModeAudio].forEach((btn) => {
+                    if (btn) btn.classList.toggle('active', btn === button);
+                });
+                if (ytAudioFormatRow) {
+                    ytAudioFormatRow.classList.toggle('show', mode === 'audio');
+                }
+                if (ytQualityFixedLabel) {
+                    ytQualityFixedLabel.textContent = mode === 'audio'
+                        ? (ytAudioFormat === 'flac' ? 'Best audio quality · FLAC' : 'Maximum MP3 quality · 320 kbps')
+                        : mode === 'mute'
+                            ? 'Maximum video quality (no sound)'
+                            : 'Maximum video quality';
+                }
+            }
+
+            function ytParseVideoId(input) {
+                const value = String(input || '').trim();
+                if (!value) return null;
+                if (/^[A-Za-z0-9_-]{11}$/.test(value)) return value;
+
+                let url = null;
+                try {
+                    url = new URL(value, window.location.href);
+                } catch (e) {
+                    url = null;
+                }
+
+                if (url) {
+                    const host = url.hostname.replace(/^www\./, '').replace(/^m\./, '');
+                    if (host === 'youtu.be') {
+                        const id = url.pathname.split('/').filter(Boolean)[0];
+                        if (id && /^[A-Za-z0-9_-]{11}$/.test(id)) return id;
+                    }
+                    if (host === 'youtube.com' || host === 'youtube-nocookie.com' || host === 'music.youtube.com') {
+                        const v = url.searchParams.get('v');
+                        if (v && /^[A-Za-z0-9_-]{11}$/.test(v)) return v;
+                        const parts = url.pathname.split('/').filter(Boolean);
+                        if (['shorts', 'embed', 'live', 'v'].includes(parts[0]) && parts[1] && /^[A-Za-z0-9_-]{11}$/.test(parts[1])) {
+                            return parts[1];
+                        }
+                    }
+                }
+
+                const match = value.match(/(?:v=|\/shorts\/|\/embed\/|\/live\/|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+                return match ? match[1] : null;
+            }
+
+            function ytWithTimeout(promise, timeoutMs, message) {
+                let timer = null;
+                const timeout = new Promise((_, reject) => {
+                    timer = setTimeout(() => reject(new Error(message)), timeoutMs);
+                });
+                return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
+            }
+
+            async function ytFetch(url, options = {}, timeoutMs = 30000) {
+                const controller = new AbortController();
+                const timer = setTimeout(() => controller.abort(), timeoutMs);
+                try {
+                    return await fetch(url, { ...options, signal: controller.signal });
+                } catch (err) {
+                    if (err && err.name === 'AbortError') {
+                        throw new Error(`Timeout after ${Math.round(timeoutMs / 1000)}s`);
+                    }
+                    throw err;
+                } finally {
+                    clearTimeout(timer);
+                }
+            }
+
+            async function ytProbe(url) {
+                const controller = new AbortController();
+                const timer = setTimeout(() => controller.abort(), 15000);
+                try {
+                    const response = await fetch(url, {
+                        signal: controller.signal,
+                        cache: 'no-store',
+                        headers: { Range: 'bytes=0-1023' }
+                    });
+                    const type = response.headers.get('content-type') || '';
+                    const lengthHeader = response.headers.get('content-length');
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    if (lengthHeader === '0') throw new Error('0-byte response');
+                    if (!response.body) throw new Error('No response body');
+                    const reader = response.body.getReader();
+                    let chunk;
+                    try {
+                        chunk = await reader.read();
+                    } finally {
+                        await reader.cancel().catch(() => { });
+                    }
+                    if (!chunk || !chunk.value || chunk.value.byteLength === 0) {
+                        throw new Error('0-byte response');
+                    }
+                    if (!ytLooksLikeMedia(chunk.value, type)) {
+                        throw new Error('Server returned a non-media response');
+                    }
+                    return { type, size: lengthHeader ? Number(lengthHeader) : 0 };
+                } catch (err) {
+                    if (err && err.name === 'AbortError') throw new Error('Timeout while checking stream');
+                    throw err;
+                } finally {
+                    clearTimeout(timer);
+                }
+            }
+
+            async function ytDownloadChunked(url, label, fallbackType, total) {
+                const chunkSize = 1024 * 1024;
+                const count = Math.ceil(total / chunkSize);
+                const parts = new Array(count);
+                const sharedController = new AbortController();
+                const overallTimer = setTimeout(() => sharedController.abort(), 30 * 60 * 1000);
+                let nextIndex = 0;
+                let loaded = 0;
+                let failed = null;
+
+                const worker = async () => {
+                    while (!failed) {
+                        const index = nextIndex++;
+                        if (index >= count) return;
+                        const start = index * chunkSize;
+                        const end = Math.min(total - 1, start + chunkSize - 1);
+                        const controller = new AbortController();
+                        const timer = setTimeout(() => controller.abort(), 60000);
+                        const abortFromShared = () => controller.abort();
+                        sharedController.signal.addEventListener('abort', abortFromShared, { once: true });
+                        try {
+                            const response = await fetch(url, {
+                                signal: controller.signal,
+                                cache: 'no-store',
+                                headers: { Range: `bytes=${start}-${end}` }
+                            });
+                            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                            const buffer = await response.arrayBuffer();
+                            const expected = end - start + 1;
+                            if (buffer.byteLength !== expected) {
+                                throw new Error(`chunk ${index + 1}/${count} incomplete (${ytFormatBytes(buffer.byteLength)} of ${ytFormatBytes(expected)})`);
+                            }
+                            parts[index] = new Uint8Array(buffer);
+                            loaded += buffer.byteLength;
+                            ytShowProgress(label, loaded, total);
+                        } catch (err) {
+                            if (err && err.name === 'AbortError') {
+                                err = new Error('Chunk download stalled or timed out');
+                            }
+                            if (!failed) failed = err;
+                            sharedController.abort();
+                            throw err;
+                        } finally {
+                            clearTimeout(timer);
+                            sharedController.signal.removeEventListener('abort', abortFromShared);
+                        }
+                    }
+                };
+
+                try {
+                    const concurrency = Math.min(6, count);
+                    await Promise.all(Array.from({ length: concurrency }, worker));
+                } catch (err) {
+                    if (!failed) failed = err;
+                } finally {
+                    clearTimeout(overallTimer);
+                    sharedController.abort();
+                }
+
+                if (failed) throw failed;
+                let bytes = 0;
+                for (const part of parts) {
+                    if (!part) throw new Error('Chunked download incomplete');
+                    bytes += part.byteLength;
+                }
+                if (bytes !== total) {
+                    throw new Error(`Chunked download incomplete (${ytFormatBytes(bytes)} of ${ytFormatBytes(total)})`);
+                }
+                const type = fallbackType || 'application/octet-stream';
+                if (!ytLooksLikeMedia(parts[0], type)) {
+                    throw new Error('Server returned a non-media response');
+                }
+                ytShowProgress(label, total, total);
+                return { blob: new Blob(parts, { type }), size: total, type };
+            }
+
+            async function ytDownloadMedia(url, label, fallbackType = '', options = {}) {
+                const expectedTotal = Number(options.total) || Number(options.expectedTotal) || 0;
+                if (options.chunked && expectedTotal > 0) {
+                    return ytDownloadChunked(url, label, fallbackType, expectedTotal);
+                }
+
+                const controller = new AbortController();
+                let idleTimer = null;
+                const resetIdle = () => {
+                    clearTimeout(idleTimer);
+                    idleTimer = setTimeout(() => controller.abort(), 45000);
+                };
+                resetIdle();
+                const overallTimer = setTimeout(() => controller.abort(), 30 * 60 * 1000);
+
+                try {
+                    const response = await fetch(url, {
+                        signal: controller.signal,
+                        headers: { Range: 'bytes=0-' }
+                    });
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    const type = response.headers.get('content-type') || fallbackType || 'application/octet-stream';
+                    const lengthHeader = response.headers.get('content-length');
+                    const contentRange = response.headers.get('content-range') || '';
+                    const totalMatch = contentRange.match(/\/(\d+)\s*$/);
+                    const total = expectedTotal || (totalMatch ? Number(totalMatch[1]) : lengthHeader ? Number(lengthHeader) : 0);
+
+                    if (!response.body) {
+                        const buffer = await response.arrayBuffer();
+                        if (!buffer.byteLength) throw new Error('0-byte response');
+                        if (expectedTotal > 0 && buffer.byteLength < expectedTotal) {
+                            throw new Error(`Incomplete download (${ytFormatBytes(buffer.byteLength)} of ${ytFormatBytes(expectedTotal)})`);
+                        }
+                        if (!ytLooksLikeMedia(new Uint8Array(buffer.slice(0, 64)), type)) {
+                            throw new Error('Server returned a non-media response');
+                        }
+                        showYtStatus('info', `${label} complete (${ytFormatBytes(buffer.byteLength)})`);
+                        return { blob: new Blob([buffer], { type }), size: buffer.byteLength, type };
+                    }
+
+                    const reader = response.body.getReader();
+                    const chunks = [];
+                    let loaded = 0;
+                    let lastPaint = 0;
+                    while (true) {
+                        const { done, value } = await reader.read();
+                        if (done) break;
+                        if (!value || !value.byteLength) continue;
+                        chunks.push(value);
+                        loaded += value.byteLength;
+                        resetIdle();
+                        const now = performance.now();
+                        if (now - lastPaint > 180) {
+                            lastPaint = now;
+                            ytShowProgress(label, loaded, total);
+                        }
+                    }
+                    clearTimeout(idleTimer);
+                    if (!loaded) throw new Error('0-byte response');
+                    if (total > 0 && loaded < total) {
+                        throw new Error(`Incomplete download (${ytFormatBytes(loaded)} of ${ytFormatBytes(total)})`);
+                    }
+                    if (!ytLooksLikeMedia(chunks[0], type)) {
+                        throw new Error('Server returned a non-media response');
+                    }
+                    ytShowProgress(label, loaded, total || loaded);
+                    return { blob: new Blob(chunks, { type }), size: loaded, type };
+                } catch (err) {
+                    if (err && err.name === 'AbortError') {
+                        throw new Error('Download stalled or timed out');
+                    }
+                    throw err;
+                } finally {
+                    clearTimeout(idleTimer);
+                    clearTimeout(overallTimer);
+                }
+            }
+
+            function ytSanitizeFilename(name, fallback = 'youtube') {
+                let value = String(name || '')
+                    .replace(/[<>:"/\\|?*\u0000-\u001F]/g, ' ')
+                    .replace(/\s+/g, ' ')
+                    .trim()
+                    .replace(/[. ]+$/g, '');
+                if (!value) value = fallback;
+                return value.slice(0, 140);
+            }
+
+            function ytHeight(format) {
+                const height = Number(format && format.height);
+                if (height > 0) return height;
+                const text = String((format && (format.qualityLabel || format.resolution)) || '');
+                const match = text.match(/(\d{3,4})p/);
+                return match ? Number(match[1]) : 0;
+            }
+
+            function ytPickVideo(formats, quality) {
+                const videos = formats.filter((f) => f && f.url && String(f.type || '').startsWith('video/'));
+                if (!videos.length) throw new Error('No video stream available');
+
+                const target = quality === 'max' ? Infinity : Number(quality) || 0;
+                const h264 = videos.filter((f) => f.encoding === 'h264' || /avc1/i.test(String(f.type || '')));
+                let pool = videos;
+                if (target <= 1080 && h264.length) pool = h264;
+
+                const sorted = pool.slice().sort((a, b) => {
+                    const heightDiff = ytHeight(b) - ytHeight(a);
+                    if (heightDiff) return heightDiff;
+                    const fpsDiff = (Number(b.fps) || 0) - (Number(a.fps) || 0);
+                    if (fpsDiff) return fpsDiff;
+                    return (Number(b.bitrate) || 0) - (Number(a.bitrate) || 0);
+                });
+
+                if (quality === 'max') return sorted[0];
+                const atMost = sorted.filter((f) => ytHeight(f) > 0 && ytHeight(f) <= target);
+                return atMost.length ? atMost[0] : sorted[sorted.length - 1];
+            }
+
+            function ytPickAudio(formats) {
+                const audios = formats.filter((f) => f && f.url && String(f.type || '').startsWith('audio/'));
+                if (!audios.length) throw new Error('No audio stream available');
+                const qualityRank = (format) => {
+                    const quality = String(format.audioQuality || '').toUpperCase();
+                    if (quality.includes('HIGH')) return 3;
+                    if (quality.includes('MEDIUM')) return 2;
+                    if (quality.includes('LOW')) return 1;
+                    return String(format.encoding || '').toLowerCase() === 'opus' ? 3 : 2;
+                };
+                return audios.slice().sort((a, b) => {
+                    const qualityDiff = qualityRank(b) - qualityRank(a);
+                    if (qualityDiff) return qualityDiff;
+                    const bitrateDiff = (Number(b.bitrate) || 0) - (Number(a.bitrate) || 0);
+                    if (bitrateDiff) return bitrateDiff;
+                    const aOpus = String(a.encoding || '').toLowerCase() === 'opus' ? 1 : 0;
+                    const bOpus = String(b.encoding || '').toLowerCase() === 'opus' ? 1 : 0;
+                    return bOpus - aOpus;
+                })[0];
+            }
+
+            function ytMaxVideoHeight(formats) {
+                return (formats || []).reduce((max, format) => {
+                    if (!format || !String(format.type || '').startsWith('video/')) return max;
+                    return Math.max(max, ytHeight(format));
+                }, 0);
+            }
+
+            function ytVideoContainer(type, format) {
+                const text = String(type || '');
+                if (/webm/i.test(text) || String(format && format.container) === 'webm'
+                    || String(format && format.encoding) === 'vp9' || /vp0?9/i.test(String(format && format.type))) {
+                    return 'webm';
+                }
+                return 'mp4';
+            }
+
+            function ytAudioContainer(type, format) {
+                const text = String(type || '');
+                if (/webm/i.test(text) || String(format && format.container) === 'webm'
+                    || String(format && format.encoding) === 'opus') {
+                    return 'webm';
+                }
+                return 'm4a';
+            }
+
+            function ytMediaCandidates(format, id) {
+                let original = String((format && format.url) || '');
+                if (original.startsWith('/')) original = YT_INVIDIOUS_API + original;
+                const candidates = [];
+
+                if (original.startsWith(YT_INVIDIOUS_API + '/')) {
+                    const suffix = original.slice(YT_INVIDIOUS_API.length);
+                    YT_COMPANIONS.forEach((host, index) => {
+                        candidates.push({ url: host + suffix, label: `comp${index + 1} direct` });
+                    });
+                } else if (/^https?:\/\//i.test(original)) {
+                    candidates.push({ url: original, label: 'invidious direct' });
+                }
+
+                YT_COMPANIONS.forEach((host, index) => {
+                    candidates.push({
+                        url: `${host}/companion/latest_version?id=${encodeURIComponent(id)}&itag=${encodeURIComponent(format.itag)}&local=true`,
+                        label: `comp${index + 1} fresh`
+                    });
+                });
+
+                return candidates;
+            }
+
+            function ytFormatSize(format) {
+                const direct = Number(format && (format.clen || format.size));
+                if (direct > 0) return direct;
+                try {
+                    const url = new URL(String((format && format.url) || ''));
+                    const clen = Number(url.searchParams.get('clen'));
+                    return clen > 0 ? clen : 0;
+                } catch (e) {
+                    return 0;
+                }
+            }
+
+            async function ytDownloadFormat(format, id, label) {
+                const candidates = ytMediaCandidates(format, id);
+                let lastError = null;
+                const fallbackType = String(format.type || '').split(';')[0].trim();
+                const total = ytFormatSize(format);
+
+                for (const candidate of candidates) {
+                    try {
+                        showYtStatus('info', `${label}: checking ${candidate.label}...`);
+                        const probe = await ytProbe(candidate.url);
+                        showYtStatus('info', `${label}: downloading from ${candidate.label}...`);
+                        const media = await ytDownloadMedia(
+                            candidate.url,
+                            `Downloading ${label.toLowerCase()}`,
+                            fallbackType,
+                            { chunked: true, total }
+                        );
+                        ytLog('ok', `${label}: ${candidate.label} (${ytFormatBytes(media.size)})`);
+                        return { ...media, candidate, type: media.type || probe.type || fallbackType };
+                    } catch (err) {
+                        lastError = err;
+                        ytLog('fail', `${label}: ${candidate.label} - ${err.message}`);
+                    }
+                }
+
+                throw new Error(`${label}: all servers failed${lastError ? ` (${lastError.message})` : ''}`);
+            }
+
+            async function ytFetchInvidiousInfo(id) {
+                ytLog('info', 'Invidious: loading video info...');
+                const response = await ytFetch(
+                    `${YT_INVIDIOUS_API}/api/v1/videos/${encodeURIComponent(id)}?local=true`,
+                    { headers: { Accept: 'application/json' }, cache: 'no-store' },
+                    30000
+                );
+                if (!response.ok) throw new Error(`Invidious HTTP ${response.status}`);
+                const data = await response.json();
+                if (!data || !Array.isArray(data.adaptiveFormats) || !data.adaptiveFormats.length) {
+                    throw new Error('Invidious returned no streams');
+                }
+                ytLog('ok', `Invidious: ${data.adaptiveFormats.length} streams found`);
+                return data;
+            }
+
+            function ytLoadScript(src, timeoutMs = 30000) {
+                return new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    let settled = false;
+                    const finish = (err) => {
+                        if (settled) return;
+                        settled = true;
+                        clearTimeout(timer);
+                        script.onload = null;
+                        script.onerror = null;
+                        if (err) reject(err);
+                        else resolve();
+                    };
+                    const timer = setTimeout(() => finish(new Error(`Timeout loading ${src}`)), timeoutMs);
+                    script.src = src;
+                    script.onload = () => finish();
+                    script.onerror = () => finish(new Error(`Could not load ${src}`));
+                    document.head.appendChild(script);
+                });
+            }
+
+            async function ytGetFfmpeg() {
+                if (ytFfmpegCore) return ytFfmpegCore;
+                if (ytFfmpegPromise) return ytFfmpegPromise;
+
+                ytFfmpegPromise = (async () => {
+                    let lastError = null;
+                    for (const coreUrl of [YT_FFMPEG_CORE, YT_FFMPEG_CORE_FALLBACK]) {
+                        try {
+                            if (typeof window.createFFmpegCore !== 'function') {
+                                await ytLoadScript(coreUrl);
+                            }
+                            if (typeof window.createFFmpegCore !== 'function') {
+                                throw new Error('createFFmpegCore is unavailable');
+                            }
+                            const wasmURL = coreUrl.replace(/\.js$/g, '.wasm');
+                            const workerURL = coreUrl.replace(/\.js$/g, '.worker.js');
+                            const mainScriptUrlOrBlob = `${coreUrl}#${btoa(JSON.stringify({ wasmURL, workerURL }))}`;
+                            const core = await ytWithTimeout(
+                                window.createFFmpegCore({ mainScriptUrlOrBlob }),
+                                180000,
+                                'Muxer loading timed out'
+                            );
+                            core.setLogger(({ type, message }) => {
+                                if (type === 'stderr' && /error|invalid|failed|unable/i.test(String(message || ''))) {
+                                    ytLog('warn', `Muxer: ${String(message).slice(0, 220)}`);
+                                }
+                            });
+                            core.setProgress(() => { });
+                            ytFfmpegCore = core;
+                            return core;
+                        } catch (err) {
+                            lastError = err;
+                            ytLog('warn', `Muxer CDN failed: ${err.message}`);
+                        }
+                    }
+                    throw new Error(`Could not load local muxer${lastError ? `: ${lastError.message}` : ''}`);
+                })();
+
+                try {
+                    return await ytFfmpegPromise;
+                } catch (err) {
+                    ytFfmpegPromise = null;
+                    throw err;
+                }
+            }
+
+            async function ytMux(videoBlob, audioBlob, videoContainer, audioContainer) {
+                const videoExt = videoContainer === 'webm' ? 'webm' : 'mp4';
+                const audioExt = audioContainer === 'webm' ? 'webm' : 'm4a';
+                const outputExt = videoExt === 'mp4' && audioExt === 'm4a' ? 'mp4'
+                    : videoExt === 'webm' && audioExt === 'webm' ? 'webm'
+                        : 'mkv';
+
+                if (ytFfmpegCore) {
+                    showYtStatus('info', 'Preparing local muxer...');
+                } else {
+                    showYtStatus('info', 'Loading local muxer (first time: 32 MB)...');
+                    ytLog('info', 'Loading ffmpeg.wasm muxer...');
+                }
+                const core = await ytGetFfmpeg();
+                ytLog('ok', 'Local muxer ready');
+
+                const videoName = `video.${videoExt}`;
+                const audioName = `audio.${audioExt}`;
+                const outputName = `out.${outputExt}`;
+
+                try {
+                    core.FS.writeFile(videoName, new Uint8Array(await videoBlob.arrayBuffer()));
+                    core.FS.writeFile(audioName, new Uint8Array(await audioBlob.arrayBuffer()));
+
+                    showYtStatus('info', 'Merging video and audio...');
+                    await new Promise((resolve) => setTimeout(resolve, 80));
+
+                    let ret = core.exec(
+                        '-i', videoName,
+                        '-i', audioName,
+                        '-map', '0:v:0',
+                        '-map', '1:a:0',
+                        '-c', 'copy',
+                        '-shortest',
+                        outputName
+                    );
+
+                    if (ret !== 0 && outputExt === 'mp4') {
+                        ytLog('warn', `Muxer copy pass failed (${ret}); trying AAC audio...`);
+                        ret = core.exec(
+                            '-i', videoName,
+                            '-i', audioName,
+                            '-map', '0:v:0',
+                            '-map', '1:a:0',
+                            '-c:v', 'copy',
+                            '-c:a', 'aac',
+                            '-b:a', '320k',
+                            '-shortest',
+                            outputName
+                        );
+                    }
+
+                    if (ret !== 0) throw new Error(`ffmpeg exited with code ${ret}`);
+                    const output = core.FS.readFile(outputName);
+                    if (!output || output.length === 0) throw new Error('Muxer returned an empty file');
+
+                    const mime = outputExt === 'mp4' ? 'video/mp4' : outputExt === 'webm' ? 'video/webm' : 'video/x-matroska';
+                    return { blob: new Blob([output], { type: mime }), ext: outputExt };
+                } finally {
+                    try { core.FS.unlink(videoName); } catch (e) { }
+                    try { core.FS.unlink(audioName); } catch (e) { }
+                    try { core.FS.unlink(outputName); } catch (e) { }
+                    try { core.reset(); } catch (e) { }
+                }
+            }
+
+            async function ytMuxOrSplit(videoBlob, audioBlob, title, qualityLabel, videoContainer, audioContainer) {
+                try {
+                    const muxed = await ytMux(videoBlob, audioBlob, videoContainer, audioContainer);
+                    return {
+                        files: [{ blob: muxed.blob, filename: `${title} [${qualityLabel}].${muxed.ext}` }],
+                        note: muxed.ext === 'mkv' ? 'Saved as MKV because the streams use different containers.' : '',
+                        noteLevel: muxed.ext === 'mkv' ? 'info' : ''
+                    };
+                } catch (err) {
+                    ytLog('warn', `Muxing failed: ${err.message}`);
+                    const videoExt = videoContainer === 'webm' ? 'webm' : 'mp4';
+                    const audioExt = audioContainer === 'webm' ? 'webm' : 'm4a';
+                    return {
+                        files: [
+                            { blob: videoBlob, filename: `${title} [${qualityLabel}].${videoExt}` },
+                            { blob: audioBlob, filename: `${title} [audio].${audioExt}` }
+                        ],
+                        note: 'Video and audio could not be merged; saved as two files.',
+                        noteLevel: 'warn'
+                    };
+                }
+            }
+
+            function ytCobaltQuality(quality) {
+                if (quality === 'max') return 'max';
+                return String(quality);
+            }
+
+            function ytCobaltBitrate(bitrate) {
+                return bitrate === 'best' ? '320' : String(bitrate);
+            }
+
+            async function ytTryCobalt(videoUrl, mode, quality, bitrate, id, audioFormatChoice = 'mp3') {
+                const body = { url: videoUrl, filenameStyle: 'pretty', disableMetadata: false };
+                if (mode === 'audio') {
+                    body.downloadMode = 'audio';
+                    if (audioFormatChoice === 'flac') {
+                        body.audioFormat = 'wav';
+                    } else {
+                        body.audioFormat = 'mp3';
+                        body.audioBitrate = ytCobaltBitrate(bitrate);
+                    }
+                } else if (mode === 'mute') {
+                    body.downloadMode = 'mute';
+                    body.videoQuality = ytCobaltQuality(quality);
+                } else {
+                    body.downloadMode = 'auto';
+                    body.localProcessing = true;
+                    body.videoQuality = ytCobaltQuality(quality);
+                }
+
+                ytLog('info', `Rue cobalt: requesting ${mode === 'video' ? 'video + audio' : mode}...`);
+                showYtStatus('info', 'Trying Rue cobalt...');
+
+                const response = await ytFetch(`${YT_COBALT_API}/`, {
+                    method: 'POST',
+                    headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                }, 45000);
+
+                const text = await response.text();
+                let data = null;
+                try {
+                    data = JSON.parse(text);
+                } catch (e) {
+                    throw new Error(`Rue cobalt returned invalid JSON (HTTP ${response.status})`);
+                }
+
+                if (!response.ok || data.status === 'error') {
+                    const code = data && data.error && data.error.code ? data.error.code : `HTTP ${response.status}`;
+                    if (response.status === 429 || code === 'error.too_many_requests') {
+                        throw new Error('Rue cobalt is rate-limited');
+                    }
+                    if (String(code).includes('auth')) {
+                        throw new Error('Rue cobalt requires authentication');
+                    }
+                    throw new Error(code);
+                }
+
+                if (data.status === 'tunnel' || data.status === 'redirect') {
+                    if (!data.url) throw new Error('Rue cobalt returned no download URL');
+                    const probe = await ytProbe(data.url);
+                    ytLog('ok', `Rue cobalt: stream verified (${probe.type || 'unknown type'})`);
+                    const isAudio = mode === 'audio';
+                    const fallbackType = isAudio
+                        ? (audioFormatChoice === 'flac' ? 'audio/wav' : 'audio/mpeg')
+                        : 'video/mp4';
+                    const media = await ytDownloadMedia(data.url, isAudio ? 'Downloading audio' : 'Downloading video', fallbackType);
+                    let filename = ytSanitizeFilename(data.filename || `youtube_${id}`, `youtube_${id}`);
+                    if (isAudio) {
+                        const base = filename.replace(/\.[a-z0-9]{2,5}$/i, '');
+                        if (audioFormatChoice === 'flac') {
+                            const mediaType = String(media.type || '');
+                            const inputExt = /wav/i.test(mediaType) ? 'wav'
+                                : /webm|ogg|opus/i.test(mediaType) ? 'webm' : 'm4a';
+                            showYtStatus('info', 'Encoding FLAC fallback...');
+                            ytLog('info', 'Rue cobalt: encoding FLAC fallback...');
+                            const encoded = await ytEncodeAudio(media.blob, inputExt, base, 'flac');
+                            if (!encoded.flacBlob || !encoded.flacBlob.size) {
+                                throw new Error('FLAC fallback encoder returned an empty file');
+                            }
+                            return {
+                                files: [{ blob: encoded.flacBlob, filename: `${base} [lossless].flac` }],
+                                provider: 'Rue cobalt + local encoder',
+                                note: 'FLAC fallback created from the cobalt audio stream.',
+                                noteLevel: 'info'
+                            };
+                        }
+                        filename = base + '.mp3';
+                    } else if (!/\.[a-z0-9]{2,5}$/i.test(filename)) {
+                        filename += '.mp4';
+                    }
+                    return { files: [{ blob: media.blob, filename }], provider: 'Rue cobalt' };
+                }
+
+                if (data.status === 'local-processing') {
+                    const tunnels = Array.isArray(data.tunnel) ? data.tunnel : [];
+                    if (!tunnels.length) throw new Error('Rue cobalt returned no streams');
+                    const probes = [];
+                    for (const tunnel of tunnels) {
+                        try {
+                            const probe = await ytProbe(tunnel);
+                            probes.push({ url: tunnel, ...probe });
+                        } catch (err) {
+                            ytLog('fail', `Rue cobalt stream: ${err.message}`);
+                        }
+                    }
+                    if (!probes.length) throw new Error('Rue cobalt returned only broken streams');
+
+                    let videoProbe = probes.find((p) => /^video\//i.test(p.type)) || probes[0];
+                    let audioProbe = probes.find((p) => /^audio\//i.test(p.type)) || probes.find((p) => p !== videoProbe);
+                    if (!videoProbe || !audioProbe) throw new Error('Rue cobalt returned incomplete streams');
+
+                    const videoMedia = await ytDownloadMedia(videoProbe.url, 'Downloading video', 'video/mp4');
+                    const audioMedia = await ytDownloadMedia(audioProbe.url, 'Downloading audio', 'audio/mp4');
+
+                    const rawTitle = (data.output && data.output.metadata && data.output.metadata.title)
+                        || String((data.output && data.output.filename) || '').replace(/\.[^.]+$/, '')
+                        || `youtube_${id}`;
+                    const title = ytSanitizeFilename(rawTitle, `youtube_${id}`);
+                    const qualityMatch = String((data.output && data.output.filename) || '').match(/\((\d{3,4})p/);
+                    const qualityLabel = qualityMatch ? `${qualityMatch[1]}p` : quality === 'max' ? 'best' : `${quality}p`;
+
+                    const result = await ytMuxOrSplit(
+                        videoMedia.blob,
+                        audioMedia.blob,
+                        title,
+                        qualityLabel,
+                        ytVideoContainer(videoProbe.type, { container: 'mp4' }),
+                        ytAudioContainer(audioProbe.type, { encoding: 'aac' })
+                    );
+                    return { ...result, provider: 'Rue cobalt' };
+                }
+
+                throw new Error(`Unexpected Rue cobalt response: ${data.status || 'unknown'}`);
+            }
+
+            async function ytAudioBlobToMp3(blob) {
+                const arrayBuffer = await blob.arrayBuffer();
+                if (!arrayBuffer.byteLength) throw new Error('Audio stream is empty');
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                let decoded = null;
+                try {
+                    decoded = await audioCtx.decodeAudioData(arrayBuffer);
+                } catch (e) {
+                    throw new Error('Could not decode audio stream for MP3 conversion');
+                } finally {
+                    try { await audioCtx.close(); } catch (e) { }
+                }
+                if (!decoded || !decoded.length) throw new Error('Decoded audio is empty');
+                return bufferToMp3(decoded, decoded.sampleRate);
+            }
+
+            async function ytEncodeAudio(blob, inputExt, title, desiredFormat = 'both') {
+                const core = await ytGetFfmpeg();
+                const inputName = `audio_input.${inputExt || 'bin'}`;
+                const flacName = 'audio_out.flac';
+                const mp3Name = 'audio_out.mp3';
+                const wantFlac = desiredFormat !== 'mp3';
+                const wantMp3 = desiredFormat !== 'flac';
+                let flacBlob = null;
+                let mp3Blob = null;
+
+                try {
+                    core.FS.writeFile(inputName, new Uint8Array(await blob.arrayBuffer()));
+
+                    if (wantFlac) {
+                        showYtStatus('info', 'Encoding lossless FLAC...');
+                        ytLog('info', 'Local encoder: creating FLAC (lossless)...');
+                        const flacRet = core.exec(
+                            '-i', inputName,
+                            '-vn',
+                            '-c:a', 'flac',
+                            '-sample_fmt', 's16',
+                            '-compression_level', '8',
+                            flacName
+                        );
+                        if (flacRet === 0) {
+                            const flac = core.FS.readFile(flacName);
+                            if (flac && flac.length) flacBlob = new Blob([flac], { type: 'audio/flac' });
+                        } else {
+                            ytLog('warn', `FLAC encoder exited with code ${flacRet}`);
+                        }
+                    }
+
+                    if (wantMp3) {
+                        showYtStatus('info', 'Encoding MP3 (320 kbps)...');
+                        ytLog('info', 'Local encoder: creating MP3 320 kbps...');
+                        const mp3Ret = core.exec(
+                            '-i', inputName,
+                            '-vn',
+                            '-c:a', 'libmp3lame',
+                            '-b:a', '320k',
+                            '-metadata', `title=${title}`,
+                            mp3Name
+                        );
+                        if (mp3Ret === 0) {
+                            const mp3 = core.FS.readFile(mp3Name);
+                            if (mp3 && mp3.length) mp3Blob = new Blob([mp3], { type: 'audio/mpeg' });
+                        } else {
+                            ytLog('warn', `MP3 encoder exited with code ${mp3Ret}`);
+                        }
+                    }
+
+                    if (!flacBlob && !mp3Blob) throw new Error('Local audio encoder produced no files');
+                    return { flacBlob, mp3Blob };
+                } finally {
+                    try { core.FS.unlink(inputName); } catch (e) { }
+                    try { core.FS.unlink(flacName); } catch (e) { }
+                    try { core.FS.unlink(mp3Name); } catch (e) { }
+                    try { core.reset(); } catch (e) { }
+                }
+            }
+
+            async function ytTryInvidious(id, mode, quality, prefetchedInfo = null, audioFormatChoice = 'flac') {
+                const info = prefetchedInfo || await ytFetchInvidiousInfo(id);
+                const title = ytSanitizeFilename(info.title || `youtube_${id}`, `youtube_${id}`);
+                let videoFormat = null;
+                let audioFormat = null;
+                let videoMedia = null;
+                let audioMedia = null;
+
+                if (mode !== 'audio') {
+                    videoFormat = ytPickVideo(info.adaptiveFormats, quality);
+                    const height = ytHeight(videoFormat);
+                    const label = videoFormat.qualityLabel || (height ? `${height}p` : 'video');
+                    ytLog('info', `Invidious: selected ${label} itag ${videoFormat.itag} (${videoFormat.encoding || '?'})`);
+                    videoMedia = await ytDownloadFormat(videoFormat, id, 'Video');
+                }
+
+                if (mode === 'video' || mode === 'audio') {
+                    audioFormat = ytPickAudio(info.adaptiveFormats);
+                    ytLog('info', `Invidious: selected audio itag ${audioFormat.itag} (${audioFormat.encoding || '?'})`);
+                    audioMedia = await ytDownloadFormat(audioFormat, id, 'Audio');
+                }
+
+                if (mode === 'video') {
+                    const height = ytHeight(videoFormat);
+                    const qualityLabel = videoFormat.qualityLabel || (height ? `${height}p` : 'video');
+                    const result = await ytMuxOrSplit(
+                        videoMedia.blob,
+                        audioMedia.blob,
+                        title,
+                        qualityLabel,
+                        ytVideoContainer(videoMedia.type, videoFormat),
+                        ytAudioContainer(audioMedia.type, audioFormat)
+                    );
+                    return { ...result, provider: 'Invidious' };
+                }
+
+                if (mode === 'mute') {
+                    const height = ytHeight(videoFormat);
+                    const qualityLabel = videoFormat.qualityLabel || (height ? `${height}p` : 'video');
+                    const ext = ytVideoContainer(videoMedia.type, videoFormat) === 'webm' ? 'webm' : 'mp4';
+                    return { files: [{ blob: videoMedia.blob, filename: `${title} [${qualityLabel} muted].${ext}` }], provider: 'Invidious' };
+                }
+
+                const inputExt = ytAudioContainer(audioMedia.type, audioFormat) === 'webm' ? 'webm' : 'm4a';
+                const choice = audioFormatChoice === 'mp3' ? 'mp3' : 'flac';
+
+                if (choice === 'mp3') {
+                    if (ytFfmpegCore) {
+                        showYtStatus('info', 'Encoding MP3 (320 kbps)...');
+                    } else {
+                        showYtStatus('info', 'Loading local audio encoder (first time: 32 MB)...');
+                    }
+                    ytLog('info', 'Preparing MP3 320 from the original YouTube stream...');
+                    let mp3Blob = null;
+                    try {
+                        const encoded = await ytEncodeAudio(audioMedia.blob, inputExt, title, 'mp3');
+                        mp3Blob = encoded.mp3Blob;
+                    } catch (err) {
+                        ytLog('warn', `Native MP3 encoder failed: ${err.message}`);
+                    }
+                    if (!mp3Blob || !mp3Blob.size) {
+                        ytLog('warn', 'Native MP3 encoder unavailable; using JS MP3 fallback');
+                        mp3Blob = await ytAudioBlobToMp3(audioMedia.blob);
+                    }
+                    if (!mp3Blob || !mp3Blob.size) throw new Error('MP3 conversion returned an empty file');
+                    ytLog('ok', `MP3 (320 kbps): ${ytFormatBytes(mp3Blob.size)}`);
+                    return {
+                        files: [{ blob: mp3Blob, filename: `${title}.mp3` }],
+                        provider: 'Invidious + local encoder',
+                        note: 'MP3 320 kbps encoded from the original YouTube audio.',
+                        noteLevel: 'info'
+                    };
+                }
+
+                if (ytFfmpegCore) {
+                    showYtStatus('info', 'Encoding lossless FLAC...');
+                } else {
+                    showYtStatus('info', 'Loading local audio encoder (first time: 32 MB)...');
+                }
+                ytLog('info', 'Preparing lossless FLAC from the original YouTube stream...');
+                let flacBlob = null;
+                try {
+                    const encoded = await ytEncodeAudio(audioMedia.blob, inputExt, title, 'flac');
+                    flacBlob = encoded.flacBlob;
+                } catch (err) {
+                    ytLog('warn', `Local FLAC encoder failed: ${err.message}`);
+                }
+                if (!flacBlob || !flacBlob.size) {
+                    throw new Error('FLAC encoding failed. Choose MP3 or try again.');
+                }
+                ytLog('ok', `FLAC (lossless): ${ytFormatBytes(flacBlob.size)}`);
+                return {
+                    files: [{ blob: flacBlob, filename: `${title} [lossless].flac` }],
+                    provider: 'Invidious + local encoder',
+                    note: 'FLAC preserves the original YouTube audio without extra loss.',
+                    noteLevel: 'info'
+                };
+            }
+
+            function ytFriendlyError(err) {
+                const message = err && err.message ? err.message : String(err);
+                if (/Failed to fetch|NetworkError|Load failed|Network request failed/i.test(message)) {
+                    return 'Could not reach a download server. Check your internet connection and try again.';
+                }
+                return message;
+            }
+
+            function ytSaveBlob(blob, filename) {
+                const objectUrl = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = objectUrl;
+                link.download = filename;
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                setTimeout(() => URL.revokeObjectURL(objectUrl), 60000);
+            }
+
+            async function ytStartDownload() {
+                if (ytBusy) return;
+
                 const url = ytUrlInput.value.trim();
-
                 if (!url) {
                     showYtStatus('error', 'Please paste a YouTube link first.');
                     return;
                 }
 
-                const ytRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/(watch\?v=|shorts\/|embed\/|v\/)|youtu\.be\/|music\.youtube\.com\/watch\?v=)/;
-                if (!ytRegex.test(url)) {
+                const id = ytParseVideoId(url);
+                if (!id) {
                     showYtStatus('error', 'Please enter a valid YouTube URL.');
                     return;
                 }
 
-                ytDownloadBtn.disabled = true;
-                ytDownloadBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
-                showYtStatus('info', 'Connecting to download service...');
+                const mode = ytMode;
+                const audioFormatChoice = ytAudioFormat === 'mp3' ? 'mp3' : 'flac';
+                const quality = mode === 'audio' ? 'best' : 'max';
+                ytClearLog();
+                ytSetBusy(true);
+                ytLog('info', `Starting ${mode === 'video' ? 'video + audio' : mode === 'mute' ? 'muted video' : `audio (${audioFormatChoice === 'flac' ? 'FLAC' : 'MP3 320'})`} download (${id})`);
+                showYtStatus('info', 'Starting download...');
 
-                const body = {
-                    url: url,
-                    downloadMode: ytMode === 'audio' ? 'audio' : 'auto',
-                    filenameStyle: 'pretty',
-                    disableMetadata: false
-                };
-
-                if (ytMode === 'video') {
-                    body.videoQuality = ytQualitySelect.value;
-                    body.youtubeVideoCodec = 'h264';
-                } else {
-                    body.audioFormat = 'mp3';
-                    const bitrate = ytQualitySelect.value;
-                    if (bitrate !== 'best') {
-                        body.audioBitrate = bitrate;
-                    }
-                }
-
+                let result = null;
                 let lastError = null;
 
-                for (let i = 0; i < COBALT_INSTANCES.length; i++) {
-                    const instance = COBALT_INSTANCES[i];
-                    showYtStatus('info', `Trying server ${i + 1}/${COBALT_INSTANCES.length}...`);
+                try {
+                    let invidiousInfo = null;
+                    let invidiousTried = false;
+                    let preferInvidious = false;
 
-                    try {
-                        const response = await fetch(`${instance}/`, {
-                            method: 'POST',
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(body)
-                        });
-
-                        if (response.status === 401) {
-                            lastError = 'API requires authentication';
-                            continue;
-                        }
-
-                        if (!response.ok) {
-                            lastError = `HTTP ${response.status}`;
-                            continue;
-                        }
-
-                        const data = await response.json();
-
-                        if (data.status === 'error') {
-                            lastError = data.error?.code || 'API error';
-                            continue;
-                        }
-
-                        COBALT_API = instance;
-
-                        if (data.status === 'tunnel' || data.status === 'redirect') {
-                            showYtStatus('success', 'Download ready! Starting download...');
-                            const downloadUrl = data.url;
-                            const filename = data.filename || 'youtube_download';
-
-                            const a = document.createElement('a');
-                            a.href = downloadUrl;
-                            a.download = filename;
-                            a.target = '_blank';
-                            a.rel = 'noopener noreferrer';
-                            document.body.appendChild(a);
-                            a.click();
-                            document.body.removeChild(a);
-
-                            setTimeout(() => {
-                                showYtStatus('success', `Downloaded: ${filename}`);
-                                ytDownloadBtn.disabled = false;
-                                ytDownloadBtn.innerHTML = '<i class="fa-solid fa-download"></i> Download';
-                            }, 2000);
-                            return;
-
-                        } else if (data.status === 'picker') {
-                            showYtStatus('info', 'Multiple files found. Downloading...');
-                            if (data.picker && data.picker.length > 0) {
-                                data.picker.forEach((item, idx) => {
-                                    setTimeout(() => {
-                                        const a = document.createElement('a');
-                                        a.href = item.url;
-                                        a.download = `download_${idx + 1}`;
-                                        a.target = '_blank';
-                                        a.rel = 'noopener noreferrer';
-                                        document.body.appendChild(a);
-                                        a.click();
-                                        document.body.removeChild(a);
-                                    }, idx * 500);
-                                });
-                                setTimeout(() => {
-                                    showYtStatus('success', `${data.picker.length} files downloaded!`);
-                                    ytDownloadBtn.disabled = false;
-                                    ytDownloadBtn.innerHTML = '<i class="fa-solid fa-download"></i> Download';
-                                }, data.picker.length * 500 + 500);
+                    if (mode === 'audio') {
+                        preferInvidious = true;
+                        ytLog('info', 'Invidious: prioritizing the original best audio stream for maximum quality.');
+                    } else {
+                        try {
+                            invidiousInfo = await ytFetchInvidiousInfo(id);
+                            const maxHeight = ytMaxVideoHeight(invidiousInfo.adaptiveFormats);
+                            preferInvidious = maxHeight > 1080;
+                            if (preferInvidious) {
+                                ytLog('info', `Invidious: ${maxHeight}p available; prioritizing it over cobalt's 1080p cap.`);
                             }
-                            return;
-
-                        } else if (data.status === 'local-processing') {
-                            showYtStatus('info', 'Processing locally... Downloading stream...');
-                            if (data.tunnel && data.tunnel.length > 0) {
-                                for (let j = 0; j < data.tunnel.length; j++) {
-                                    const a = document.createElement('a');
-                                    a.href = data.tunnel[j];
-                                    a.download = data.output?.filename || `stream_${j + 1}`;
-                                    a.target = '_blank';
-                                    a.rel = 'noopener noreferrer';
-                                    document.body.appendChild(a);
-                                    a.click();
-                                    document.body.removeChild(a);
-                                }
-                                showYtStatus('success', 'Download started!');
-                                ytDownloadBtn.disabled = false;
-                                ytDownloadBtn.innerHTML = '<i class="fa-solid fa-download"></i> Download';
-                            }
-                            return;
-
-                        } else {
-                            lastError = 'Unexpected response';
-                            continue;
+                        } catch (err) {
+                            ytLog('warn', `Invidious metadata: ${ytFriendlyError(err)}`);
                         }
-
-                    } catch (err) {
-                        lastError = err.message || 'Network error';
-                        continue;
                     }
-                }
 
-                showYtStatus('error', `All servers failed. Last error: ${lastError}`);
-                ytDownloadBtn.disabled = false;
-                ytDownloadBtn.innerHTML = '<i class="fa-solid fa-download"></i> Download';
+                    if (preferInvidious) {
+                        invidiousTried = true;
+                        try {
+                            result = await ytTryInvidious(id, mode, quality, invidiousInfo, audioFormatChoice);
+                        } catch (err) {
+                            lastError = err;
+                            ytLog('fail', `Invidious: ${ytFriendlyError(err)}`);
+                        }
+                    }
+
+                    if (!result) {
+                        try {
+                            result = await ytTryCobalt(url, mode, quality, quality, id, audioFormatChoice);
+                        } catch (err) {
+                            lastError = err;
+                            ytLog('fail', `Rue cobalt: ${ytFriendlyError(err)}`);
+                        }
+                    }
+
+                    if (!result && !invidiousTried) {
+                        try {
+                            result = await ytTryInvidious(id, mode, quality, invidiousInfo, audioFormatChoice);
+                        } catch (err) {
+                            lastError = err;
+                            ytLog('fail', `Invidious: ${ytFriendlyError(err)}`);
+                        }
+                    }
+
+                    if (!result) {
+                        throw new Error(lastError ? ytFriendlyError(lastError) : 'No working server found');
+                    }
+
+                    for (let i = 0; i < result.files.length; i++) {
+                        const file = result.files[i];
+                        if (!file.blob || file.blob.size === 0) {
+                            throw new Error('Refusing to save an empty file');
+                        }
+                        ytSaveBlob(file.blob, file.filename);
+                        ytLog('ok', `Saved ${file.filename} (${ytFormatBytes(file.blob.size)})`);
+                        if (i < result.files.length - 1) {
+                            await new Promise((resolve) => setTimeout(resolve, 400));
+                        }
+                    }
+
+                    const names = result.files.map((file) => file.filename).join(', ');
+                    if (result.note) {
+                        const noteLevel = result.noteLevel === 'info' ? 'info' : 'warn';
+                        ytLog(noteLevel, result.note);
+                        if (noteLevel === 'info') {
+                            showYtStatus('success', `Downloaded via ${result.provider}: ${names} - ${result.note}`);
+                        } else {
+                            showYtStatus('warn', `${result.note} ${names}`);
+                        }
+                    } else {
+                        showYtStatus('success', `Downloaded via ${result.provider}: ${names}`);
+                    }
+                } catch (err) {
+                    const message = ytFriendlyError(err);
+                    ytLog('fail', `Download failed: ${message}`);
+                    showYtStatus('error', `Download failed: ${message}`);
+                } finally {
+                    ytSetBusy(false);
+                }
+            }
+
+            ytModeVideo.addEventListener('click', () => ytSelectMode('video', ytModeVideo));
+            ytModeMute.addEventListener('click', () => ytSelectMode('mute', ytModeMute));
+            ytModeAudio.addEventListener('click', () => ytSelectMode('audio', ytModeAudio));
+            ytAudioFormatSelect.addEventListener('change', () => {
+                if (ytBusy) {
+                    ytAudioFormatSelect.value = ytAudioFormat;
+                    return;
+                }
+                ytAudioFormat = ytAudioFormatSelect.value === 'mp3' ? 'mp3' : 'flac';
+                if (ytMode === 'audio' && ytQualityFixedLabel) {
+                    ytQualityFixedLabel.textContent = ytAudioFormat === 'flac'
+                        ? 'Best audio quality · FLAC'
+                        : 'Maximum MP3 quality · 320 kbps';
+                }
             });
+            ytLogClear.addEventListener('click', ytClearLog);
+
+            ytBackBtn.addEventListener('click', () => showScreen('welcome'));
+            ytScreenGoHome.addEventListener('click', () => showScreen('welcome'));
+
+            ytDownloadBtn.addEventListener('click', ytStartDownload);
 
             ytUrlInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
-                    ytDownloadBtn.click();
+                    e.preventDefault();
+                    ytStartDownload();
                 }
             });
         });
